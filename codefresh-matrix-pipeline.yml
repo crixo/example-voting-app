@@ -14,13 +14,13 @@
 # Create BROWSERS variable with space delimited supported browsers 'chrome firefox'
 version: '1.0'
 steps:
-  BuildingMicroServices:
-    title: Executing Parallel Docker Builds
-    image: 'codefresh/cli:latest'
-    commands: 
-      - apk add bash
-      - codefresh auth create-context --api-key ${{CODEFRESH_CLI_KEY}}
-      - bash -c 'IFS=" " read -a pipelineidsarray <<< "${{PARALLEL_PIPELINES_IDS}}" && for id in "${pipelineidsarray[@]}"; do buildids="$buildids $(codefresh run $id -b=${{CF_BRANCH}} -d)"; done && codefresh wait $buildids'
+  # BuildingMicroServices:
+  #   title: Executing Parallel Docker Builds
+  #   image: 'codefresh/cli:latest'
+  #   commands: 
+  #     - apk add bash
+  #     - codefresh auth create-context --api-key ${{CODEFRESH_CLI_KEY}}
+  #     - bash -c 'IFS=" " read -a pipelineidsarray <<< "${{PARALLEL_PIPELINES_IDS}}" && for id in "${pipelineidsarray[@]}"; do buildids="$buildids $(codefresh run $id -b=${{CF_BRANCH}} -d)"; done && codefresh wait $buildids'
   HelmUpgrade:
     title: Running Helm Upgrade
     image: codefresh/cfstep-helm:2.8.0 # You need to make sure you've set this to the correct version of Tiller installed on your helm init
